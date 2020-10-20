@@ -1,0 +1,73 @@
+
+  <nav class="navbar navbar-default navbar-inverse" role="navigation">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">XYZ Media</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a (click)="navigateTo('HOME')">Home</a></li>
+          <li><a (click)="navigateTo('ABOUT')">About</a></li>
+          <li *ngIf="store.isUserAuthenticated"><a (click)="navigateTo('GALLERY')">Gallery</a></li>
+
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li *ngIf="store.isUserAuthenticated">
+            <p class="navbar-text">Signed In as {{currentUser}}</p>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Sign In</b> <span class="caret"></span></a>
+            <ul id="login-dp" class="dropdown-menu">
+              <li>
+                <div class="row">
+                  <div class="col-md-12">
+                    <b class="sign-in-menu-header"><h2>Sign In</h2></b>
+                    <div class="sign-in-menu">
+                      <p>
+                        This is a secure system and you will need to provide your login details to access the site
+                      </p>
+                    </div>
+
+
+                    <form class="form" role="form"   accept-charset="UTF-8" id="login-nav">
+                      <div class="form-group">
+                        <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                        <input [ngModelOptions]="{standalone: true}" [(ngModel)]="email" type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address"
+                          required>
+                      </div>
+                      <div class="form-group">
+                        <label class="sr-only" for="exampleInputPassword2">Password</label>
+                        <input [ngModelOptions]="{standalone: true}" [(ngModel)]="password" type="password" class="form-control" id="exampleInputPassword2" placeholder="Password"
+                          required>
+
+                      </div>
+                      <div class="form-group">
+                        <button (click)="submit()" class="btn btn-primary btn-block">Sign in</button>
+                      </div>
+
+                    </form>
+                  </div>
+
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li *ngIf="store.isUserAuthenticated" class="logout-button">
+            <button (click)="logout()" type="button" class="btn btn-primary">Logout</button>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
